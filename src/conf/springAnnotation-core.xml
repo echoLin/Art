@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+    <beans xmlns="http://www.springframework.org/schema/beans"  
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+        xmlns:context="http://www.springframework.org/schema/context"  
+        xmlns:mvc="http://www.springframework.org/schema/mvc"  
+        xsi:schemaLocation="http://www.springframework.org/schema/beans   
+        http://www.springframework.org/schema/beans/spring-beans.xsd">  
+        
+    <!-- <bean id="memcachedPool" class="cn.edu.xmu.cn.Controller.MemCached.SockIOPool" factory-method="getInstance" init-method="initialize" destroy-method="shutDown">
+    	<constructor-arg><value>memCachedPool</value></constructor-arg>
+    	<property name="service"><list><value>115.28.94.254.1200</value></list></property>
+    	<property name="weights"><list><value>1</value></list></property>
+    	<property name="initConn"><value>1</value></property>
+    	<property name="minConn"><value>1</value></property>
+    	<property name="maxConn"><value>50</value></property>
+    	<property name="maintSleep"><value>3000</value></property>
+    	<property name="nagle"><value>false</value></property>
+    	<property name="socketTO"><value>3000</value></property>
+    </bean> -->
+    
+		
+		
+	<!-- <bean id="websocket" class="cn.edu.xmu.controller.websocket.WebsocketEndPoint"/>
+	
+	<websocket:handlers>  
+	    <websocket:mapping path="/websocket" handler="websocket"/>  
+	    <websocket:handshake-interceptors>  
+	    <bean class="cn.edu.xmu.controller.websocket.HandshakeInterceptor"/>  
+	    </websocket:handshake-interceptors>  
+	</websocket:handlers> -->
+	
+<!-- 	<websocket:message-broker application-destination-prefix="/app">
+		<websocket:stomp-endpoint path="/hello">
+			<websocket:sockjs/>
+		</websocket:stomp-endpoint>
+		<websocket:simple-broker prefix="/topic, /queue"/>
+	</websocket:message-broker> -->
+       
+        
+        <!-- CMS -->
+          
+        <bean id="adminDAO_cms" class="cn.edu.xmu.dao.cms.AdminDAOImpl"> 
+			<property name="sessionFactory" ref="sessionFactory"></property> 
+		</bean>
+		<bean id="authDAO_cms" class="cn.edu.xmu.dao.cms.AuthDAOImpl"> 
+			<property name="sessionFactory" ref="sessionFactory"></property> 
+		</bean>
+		<bean id="articleDAO_cms" class="cn.edu.xmu.dao.cms.ArticleDAOImpl">
+			<property name="sessionFactory" ref="sessionFactory"></property> 
+		</bean>
+		<bean id="blockDAO_cms" class="cn.edu.xmu.dao.cms.BlockDAOImpl">
+			<property name="sessionFactory" ref="sessionFactory"></property> 
+		</bean>
+		<bean id="categoryDAO_cms" class="cn.edu.xmu.dao.cms.CategoryDAOImpl">
+			<property name="sessionFactory" ref="sessionFactory"></property> 
+		</bean>
+		<bean id="artistDAO_cms" class="cn.edu.xmu.dao.cms.ArtistDAOImpl">
+		    <property name="sessionFactory" ref="sessionFactory"></property>
+		</bean>
+		<bean id="artworkDAO_cms" class="cn.edu.xmu.dao.cms.ArtworkDAOImpl">
+		    <property name="sessionFactory" ref="sessionFactory"></property>
+		</bean>
+		<bean id="lotDAO_cms" class="cn.edu.xmu.dao.cms.LotDAOImpl">
+		    <property name="sessionFactory" ref="sessionFactory"></property>
+		</bean>
+		
+		<bean id="adminServiceBase_cms" class="cn.edu.xmu.service.cms.AdminServiceImpl"> </bean>
+		<bean id="articleServiceBase_cms" class="cn.edu.xmu.service.cms.ArticleServiceImpl"> </bean>
+		<bean id="artistServiceBase_cms" class="cn.edu.xmu.service.cms.ArtistServiceImpl"></bean>
+		<bean id="artworkServiceBase_cms" class="cn.edu.xmu.service.cms.ArtworkServiceImpl"> </bean>
+		<bean id="lotServiceBase_cms" class="cn.edu.xmu.service.cms.LotServiceImpl"> </bean>
+		<bean id="categoryServiceBase_cms" class="cn.edu.xmu.service.cms.CategoryServiceImpl"></bean>
+		
+		<bean name="adminService_cms" parent="transactionProxy"> 
+			<property name="target" ref="adminServiceBase_cms"></property>
+		</bean>
+		<bean name="articleService_cms" parent="transactionProxy"> 
+			<property name="target" ref="articleServiceBase_cms"></property> 
+		</bean>
+		<bean name="artistService_cms" parent="transactionProxy">
+		    <property name="target" ref="artistServiceBase_cms"></property>
+		</bean>
+		<bean name="artworkService_cms" parent="transactionProxy">
+		    <property name="target" ref="artworkServiceBase_cms"></property>
+		</bean>
+		<bean name="lotService_cms" parent="transactionProxy">
+		    <property name="target" ref="lotServiceBase_cms"></property>
+		</bean>
+		<bean name="categoryService_cms" parent="transactionProxy">
+		    <property name="target" ref="categoryServiceBase_cms"></property>
+		</bean>
+		
+        
+		<!-- END of CMS -->
+
+		
+		<!-- Start of MALL -->
+		<bean id="userDAO_mall" class="cn.edu.xmu.dao.mall.UserDAOImpl">
+		   <property name="sessionFactory" ref="sessionFactory"></property>
+		</bean>
+		<bean id="articleDAO_mall" class="cn.edu.xmu.dao.mall.ArticleDAOImpl">
+			<property name="sessionFactory" ref="sessionFactory"></property> 
+		</bean>
+		<bean id="blockDAO_mall" class="cn.edu.xmu.dao.mall.BlockDAOImpl">
+			<property name="sessionFactory" ref="sessionFactory"></property> 
+		</bean>
+		<bean id="categoryDAO_mall" class="cn.edu.xmu.dao.mall.CategoryDAOImpl">
+			<property name="sessionFactory" ref="sessionFactory"></property> 
+		</bean>
+		<bean id="artistDAO_mall" class="cn.edu.xmu.dao.mall.ArtistDAOImpl">
+		    <property name="sessionFactory" ref="sessionFactory"></property>
+		</bean>
+		<bean id="shopDAO_mall" class="cn.edu.xmu.dao.mall.ShopDAOImpl">
+		    <property name="sessionFactory" ref="sessionFactory"></property>
+		</bean>
+		<bean id="artworkDAO_mall" class="cn.edu.xmu.dao.mall.ArtworkDAOImpl">
+		    <property name="sessionFactory" ref="sessionFactory"></property>
+		</bean>
+		<bean id="lotDAO_mall" class="cn.edu.xmu.dao.mall.LotDAOImpl">
+			<property name="sessionFactory" ref="sessionFactory"></property>
+		</bean>
+		<bean id="orderDAO_mall" class="cn.edu.xmu.dao.mall.OrderDAOImpl">
+		    <property name="sessionFactory" ref="sessionFactory"></property>
+		</bean>
+		<bean id="favoriteDAO_mall" class="cn.edu.xmu.dao.mall.FavoriteDAOImpl">
+			<property name="sessionFactory" ref="sessionFactory"></property>
+		</bean>
+		<bean id="addressDAO_mall" class="cn.edu.xmu.dao.mall.AddressDAOImpl">
+		     <property name="sessionFactory" ref="sessionFactory"></property>
+		</bean>
+		<bean id="paymentDAO_mall" class="cn.edu.xmu.dao.mall.PaymentDAOImpl">
+		     <property name="sessionFactory" ref="sessionFactory"></property>
+		</bean>
+		<bean id="bidDAO_mall" class="cn.edu.xmu.dao.mall.BidDAOImpl">
+		     <property name="sessionFactory" ref="sessionFactory"></property>
+		</bean>
+		<bean id="depositDAO_mall" class="cn.edu.xmu.dao.mall.DepositDAOImpl">
+		     <property name="sessionFactory" ref="sessionFactory"></property>
+		</bean>
+		
+		<bean id="indexServiceBase_mall" class="cn.edu.xmu.service.mall.IndexServiceImpl"></bean>
+		<bean id="artmallServiceBase_mall" class="cn.edu.xmu.service.mall.ArtmallServiceImpl"></bean>
+		<bean id="artistServiceBase_mall" class="cn.edu.xmu.service.mall.ArtistServiceImpl"></bean>
+		<bean id="shopServiceBase_mall" class="cn.edu.xmu.service.mall.ShopServiceImpl"></bean>
+		<bean id="orderServiceBase_mall" class="cn.edu.xmu.service.mall.OrderServiceImpl"></bean>
+		<bean id="favoriteServiceBase_mall" class="cn.edu.xmu.service.mall.FavoriteServiceImpl"></bean>
+		<bean id="userServiceBase_mall" class="cn.edu.xmu.service.mall.UserServiceImpl"></bean>
+		<bean id="artworkServiceBase_mall" class="cn.edu.xmu.service.mall.ArtworkServiceImpl"></bean>
+		<bean id="buyServiceBase_mall" class="cn.edu.xmu.service.mall.BuyServiceImpl"></bean>
+
+		
+		
+		<bean name="indexService_mall" parent="transactionProxy"> 
+			<property name="target" ref="indexServiceBase_mall"></property> 
+		</bean>
+		<bean name="artmallService_mall" parent="transactionProxy"> 
+			<property name="target" ref="artmallServiceBase_mall"></property> 
+		</bean>
+		<bean name="artistService_mall" parent="transactionProxy"> 
+			<property name="target" ref="artistServiceBase_mall"></property> 
+		</bean>
+		<bean name="shopService_mall" parent="transactionProxy">
+		    <property name="target" ref="shopServiceBase_mall"></property>
+		</bean>	
+		<bean name="orderService_mall" parent="transactionProxy">
+		    <property name="target" ref="orderServiceBase_mall"></property>
+		</bean>
+		<bean name="favoriteService_mall" parent="transactionProxy">
+		    <property name="target" ref="favoriteServiceBase_mall"></property>
+		</bean>
+		<bean id="userService_mall" parent="transactionProxy">
+		    <property name="target" ref="userServiceBase_mall"></property>
+		</bean>
+		<bean name="artworkService_mall" parent="transactionProxy">
+		    <property name="target" ref="artworkServiceBase_mall"></property>
+		</bean>
+		<bean name="buyService_mall" parent="transactionProxy">
+		    <property name="target" ref="buyServiceBase_mall"></property>
+		</bean>
+		
+		<!-- End of MALL -->
+
+		
+</beans>
