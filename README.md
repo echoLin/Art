@@ -10,3 +10,7 @@ Spring MVC+Spring+Hibernate
 前台
 
 咨询，商城，个人中心
+
+该项目在小组开发完成之后还有有不少缺陷，由于项目小组已经解散，不再更新。
+
+但是我还想要完善一下，因此另外new了一个新的respository，命名为ArtWeb，大家如果有兴趣的话请看ArtWeb
